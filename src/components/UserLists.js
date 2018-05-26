@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchUsers } from '../actions';
 
 class UserLists extends Component {
@@ -11,8 +12,14 @@ class UserLists extends Component {
 	renderList(){
 		return this.props.users.map((user)=>{
 			return (
-				<div className="user-card">
-					{user.name}
+				<div className="card card-block" key={user.email}>
+					<div className="card-body">
+					    <h5 className="card-title">{user.name}</h5>
+					    <hr/>
+					    <p className="card-text">Company: {user.company.name}</p>
+					    <p className="card-text">Email: {user.email}</p>
+					    <a href="#" className="btn btn-primary">Contact the Person</a>
+					</div>
 				</div>
 			);
 		});
